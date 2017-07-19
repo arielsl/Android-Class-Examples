@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/design_ic_visibility.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable-anydpi-v21/design_ic_visibility.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\6a9544125dcab09814a34b2ec7cc44d432f5eaf8\\output\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/design_ic_visibility_off.xml",
-        "source": "/Users/mark/.android/build-cache/714aa8b7bc8b4e35519217c99868c9466b53b607/output/res/drawable-anydpi-v21/design_ic_visibility_off.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility_off.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\6a9544125dcab09814a34b2ec7cc44d432f5eaf8\\output\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
     }
 ]

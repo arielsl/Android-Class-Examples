@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ToDoList</string>
+    <!-- A string to prompt the user to filter-->
+    <string name="prompt">Filter By</string>
+    <!-- The oprions in the spinner on the main activity to filter-->
+    <string-array name="spinner_options">
+        <item>All</item>
+        <item>Completed</item>
+        <item>Not Completed</item>
+        <item>School</item>
+        <item>Work</item>
+        <item>Family</item>
+        <item>Leisure</item>
+    </string-array>
+    <!-- The categories to choose from when creating/updating an item-->
+    <string-array name="categories">
+        <item>School</item>
+        <item>Work</item>
+        <item>Family</item>
+        <item>Leisure</item>
+    </string-array>
 </resources>

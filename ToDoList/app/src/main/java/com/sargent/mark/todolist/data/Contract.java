@@ -13,5 +13,9 @@ public class Contract {
 
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_DUE_DATE = "duedate";
+        //Add a new column to keep track of completion status
+        public static final String COLUMN_NAME_COMPLETED = "completed";
+        //Add a new column to keep track of categories
+        public static final String COLUMN_NAME_CATEGORY = "category";
     }
 }

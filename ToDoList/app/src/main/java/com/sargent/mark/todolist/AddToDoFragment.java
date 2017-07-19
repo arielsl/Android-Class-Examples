@@ -29,6 +29,7 @@ public class AddToDoFragment extends DialogFragment{
 
     //To have a way for the activity to get the data from the dialog
     public interface OnDialogCloseListener {
+
         void closeDialog(int year, int month, int day, String description);
     }
 

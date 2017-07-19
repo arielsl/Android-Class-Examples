@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "/Users/mark/Desktop/AndroidClass/inclass/ToDoList/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/Users/mark/.android/build-cache/2a6a6a5de6a804c20361c7f28f51f634b6a0aa9c/output/res/layout-v21/notification_action.xml"
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout-v21\\notification_action_tombstone.xml"
     }
 ]

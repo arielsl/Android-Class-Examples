@@ -24,7 +24,11 @@ public class DBHelper extends SQLiteOpenHelper{
         String queryString = "CREATE TABLE " + Contract.TABLE_TODO.TABLE_NAME + " ("+
                 Contract.TABLE_TODO._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
-                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE " + "); ";
+                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
+                //Add the completed column as an int: 0 for not completed and 1 for completed... do not let it be null
+                Contract.TABLE_TODO.COLUMN_NAME_COMPLETED + " INT NOT NULL, " +
+                //Add the completed column as a varchar of 20 to represent category
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " VARCHAR(20) " + "); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
         db.execSQL(queryString);

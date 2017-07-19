@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         helper = new DBHelper(this);
         db = helper.getWritableDatabase();
         cursor = getAllItems(db);
-
+        //Add the completion status to be added to the item selected
         adapter = new ToDoListAdapter(cursor, new ToDoListAdapter.ItemClickListener() {
 
             @Override
-            public void onItemClick(int pos, String description, String duedate, long id) {
+            public void onItemClick(int pos, String description, String duedate, long id, int completion) {
                 Log.d(TAG, "item click id: " + id);
                 String[] dateInfo = duedate.split("-");
                 int year = Integer.parseInt(dateInfo[0].replaceAll("\\s",""));
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
                 FragmentManager fm = getSupportFragmentManager();
 
-                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id);
+                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id, completion);
                 frag.show(fm, "updatetodofragment");
             }
         });
@@ -122,10 +122,13 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         );
     }
 
+    //When we add an item to the db, we pass 0 as we just created the task and thus it is not completed
+    //We also add a put who passes that 0 with the column name
     private long addToDo(SQLiteDatabase db, String description, String duedate) {
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_COMPLETED, 0);
         return db.insert(Contract.TABLE_TODO.TABLE_NAME, null, cv);
     }
 
@@ -135,20 +138,24 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id){
+    //The method now takes and int to update the completion status when clicking the button on the dialog
+    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id, int completion){
 
         String duedate = formatDate(year, month - 1, day);
 
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
+        //We use the column named for completion statuses and pass the new value
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_COMPLETED, completion);
 
         return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
     }
 
+    //We now take an int to update status and we pass it to the db
     @Override
-    public void closeUpdateDialog(int year, int month, int day, String description, long id) {
-        updateToDo(db, year, month, day, description, id);
+    public void closeUpdateDialog(int year, int month, int day, String description, long id, int completion) {
+        updateToDo(db, year, month, day, description, id, completion);
         adapter.swapCursor(getAllItems(db));
     }
 }

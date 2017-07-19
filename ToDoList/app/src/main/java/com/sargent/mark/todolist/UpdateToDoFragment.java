@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import java.util.Calendar;
 
@@ -24,10 +25,13 @@ public class UpdateToDoFragment extends DialogFragment {
     private final String TAG = "updatetodofragment";
     private long id;
 
+    private int completion;
+
+
 
     public UpdateToDoFragment(){}
 
-    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id) {
+    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id, int completed) {
         UpdateToDoFragment f = new UpdateToDoFragment();
 
         // Supply num input as an argument.
@@ -37,6 +41,8 @@ public class UpdateToDoFragment extends DialogFragment {
         args.putInt("day", day);
         args.putLong("id", id);
         args.putString("description", descrpition);
+        //Add the completion status to the argumetns to be read
+        args.putInt("completed", completed);
 
         f.setArguments(args);
 
@@ -45,7 +51,8 @@ public class UpdateToDoFragment extends DialogFragment {
 
     //To have a way for the activity to get the data from the dialog
     public interface OnUpdateDialogCloseListener {
-        void closeUpdateDialog(int year, int month, int day, String description, long id);
+        //As always, we keep track of completion
+        void closeUpdateDialog(int year, int month, int day, String description, long id, int completion);
     }
 
     @Override
@@ -60,17 +67,64 @@ public class UpdateToDoFragment extends DialogFragment {
         int day = getArguments().getInt("day");
         id = getArguments().getLong("id");
         String description = getArguments().getString("description");
+        //An int to keep track of completion when updating
+        int completed = getArguments().getInt("completed");
         dp.updateDate(year, month, day);
+        completion = completed;
 
         toDo.setText(description);
+
+        /*
+         On this if statement we are checking if the task is completed or not. If it is not completed:
+         add the button to be marked as done. If it is completed then add a button to unmarked it.
+         */
+        Log.d(TAG, "COMPLETED IS: " + completed);
+
+        if (completed == 0){
+            Button bt = (Button)view.findViewById(R.id.done);
+            bt.setText("Mark as done");
+            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)bt.getLayoutParams();
+            p.weight = 1;
+            bt.setLayoutParams(p);
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
+                    Log.d(TAG, "MARKING AS DONE: " + id);
+                    //We change the completion status since we clicked on mark as done
+                    //If we update the status, we pass the new completion status
+                    activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, 1);
+                    UpdateToDoFragment.this.dismiss();
+                }
+            });
+        }else if(completed == 1){
+            Button bt = (Button)view.findViewById(R.id.done);
+            bt.setText("Mark as not done");
+            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)bt.getLayoutParams();
+            p.weight = 1;
+            bt.setLayoutParams(p);
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
+                    Log.d(TAG, "MARKING AS NOT DONE: " + id);
+                    //We change the completion status since we clicked on mark as not done
+                    //If we update the status, we pass the new completion status
+                    activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, 0);
+                    UpdateToDoFragment.this.dismiss();
+                }
+            });
+        }
+
 
         add.setText("Update");
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
-                Log.d(TAG, "id: " + id);
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id);
+                Log.d(TAG, "UPDATING DATE: " + id);
+                //If we update the date, we pass the previous completion value since we did not change anything
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, completion);
                 UpdateToDoFragment.this.dismiss();
             }
         });

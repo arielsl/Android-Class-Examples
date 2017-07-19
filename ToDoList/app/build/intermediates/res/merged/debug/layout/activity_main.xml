@@ -9,11 +9,34 @@
     android:weightSum="1"
     tools:context="com.sargent.mark.todolist.MainActivity">
 
+    <!-- A linear layout to hold the header with the spinner to select categories.
+    It includes the text filter, and the spinner with all the options plus a space
+    to better accommodate the objects.-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter By:"
+            android:textColor="@color/black"/>
+        <android.support.v4.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinner_options" />
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight=".90" />
+        android:layout_weight=".80" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addToDo"

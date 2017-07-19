@@ -16,17 +16,57 @@
         android:layout_marginBottom="10dp"
         android:hint="Enter To Do" />
 
+    <!-- The linear layout to hold the spinner items for the tasks -->
+    <LinearLayout
+        android:id="@+id/spinner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Category:"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+        <android.support.v4.widget.Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/categories" />
+
+    </LinearLayout>
+
+    <!-- Changed Y scale for the picker to fit in its view-->
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight=".8" />
+        android:scaleY=".95"
+        android:layout_weight=".7" />
 
-    <Button
-        android:id="@+id/add"
+    <!--Adding this LinearLayout allows me to dynamycally change the buttton for updating status on tasks.
+    I can add weight to buttons to let them appear when I need them.-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="0dp"
         android:layout_weight=".1"
-        android:text="Add" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"/>
+    </LinearLayout>
 
 </LinearLayout>
