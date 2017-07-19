@@ -40,6 +40,7 @@
 
     </LinearLayout>
 
+    <!-- Changed Y scale for the picker to fit in its view-->
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"

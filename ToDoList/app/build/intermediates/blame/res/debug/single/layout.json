@@ -24,12 +24,12 @@
         "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\Ariel\\.android\\build-cache\\29781649cd84d014d31f0d4d471be25056dabe4b\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "C:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",

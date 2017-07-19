@@ -21,4 +21,11 @@
         android:textSize="14dp"
         android:text="06-04-2017"/>
 
+    <TextView
+        android:id="@+id/item_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:text="Category"/>
+
 </LinearLayout>

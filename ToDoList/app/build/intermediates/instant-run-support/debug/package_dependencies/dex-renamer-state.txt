@@ -1,4 +1,4 @@
-#Wed Jul 19 01:30:23 PDT 2017
+#Wed Jul 19 15:33:34 PDT 2017
 file.2=C\:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_0c9228243de4ad95476aac166ac361f20707875c\\classes.dex
 base.2=C\:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_0c9228243de4ad95476aac166ac361f20707875c
 file.1=C\:\\Users\\Ariel\\Documents\\AndroidStudioProjects\\Android-Class-Examples\\ToDoList\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_d4383c02ce7471b042ecda0bcdf1a995bd4e991e\\classes.dex

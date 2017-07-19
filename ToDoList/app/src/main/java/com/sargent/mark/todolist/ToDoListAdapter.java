@@ -48,8 +48,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     }
 
     public interface ItemClickListener {
-        //Add the completion status as part of the item
-        void onItemClick(int pos, String description, String duedate, long id, int completion);
+        //Add the completion status and cateogory as part of the item
+        void onItemClick(int pos, String description, String duedate, long id, int completion, String category);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -69,10 +69,14 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView descr;
         TextView due;
+        //This Textview will show the category of the item
+        TextView category;
         //This the layout for the item, it will change bg color depending on status
         LinearLayout linearLayout;
         String duedate;
         String description;
+        //This string holds the actual category name
+        String categoryText;
         int completed;
         long id;
 
@@ -81,6 +85,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            //Get the category item from the view
+            category = (TextView) view.findViewById(R.id.item_category);
             //Get the layout of the item to change color with the id
             linearLayout = (LinearLayout) view.findViewById(R.id.item_holder);
             view.setOnClickListener(this);
@@ -95,8 +101,12 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
             //Get the int representing the completion status from the proper column in the table
             completed = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_COMPLETED));
+            //Get the category text from the db
+            categoryText = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
             descr.setText(description);
             due.setText(duedate);
+            //Set the text of the category textview to have the actual value
+            category.setText(categoryText);
             //Add a red background if the task is completed, white if not
             if(completed == 0){
                 linearLayout.setBackgroundColor(Color.WHITE);
@@ -109,8 +119,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            //Pass the newly added completion status
-            listener.onItemClick(pos, description, duedate, id, completed);
+            //Pass the newly added completion status and category
+            listener.onItemClick(pos, description, duedate, id, completed, categoryText);
         }
     }
 

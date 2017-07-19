@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="6151ec7c9c6aea56cc8aa27855a4789180b2e849">
+        sha1="41013eda4f3b1adb908a0c51083d16e46db3ce8b">
         <dex dex="C:\Users\Ariel\Documents\AndroidStudioProjects\Android-Class-Examples\ToDoList\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_75c5bc8cb97515da95c108eee017fb8470a19e7c\classes.dex" />
     </item>
 

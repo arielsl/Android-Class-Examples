@@ -6,10 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -24,14 +26,16 @@ public class UpdateToDoFragment extends DialogFragment {
     private Button add;
     private final String TAG = "updatetodofragment";
     private long id;
-
+    //This spinner will hold the value for the category change
+    private Spinner spinner;
+    //This int will hold the value for the completion change
     private int completion;
 
 
 
     public UpdateToDoFragment(){}
 
-    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id, int completed) {
+    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id, int completed, String category) {
         UpdateToDoFragment f = new UpdateToDoFragment();
 
         // Supply num input as an argument.
@@ -43,6 +47,8 @@ public class UpdateToDoFragment extends DialogFragment {
         args.putString("description", descrpition);
         //Add the completion status to the argumetns to be read
         args.putInt("completed", completed);
+        //Add the category to the arguments to be read
+        args.putString("category", category);
 
         f.setArguments(args);
 
@@ -52,7 +58,7 @@ public class UpdateToDoFragment extends DialogFragment {
     //To have a way for the activity to get the data from the dialog
     public interface OnUpdateDialogCloseListener {
         //As always, we keep track of completion
-        void closeUpdateDialog(int year, int month, int day, String description, long id, int completion);
+        void closeUpdateDialog(int year, int month, int day, String description, long id, int completion, String category);
     }
 
     @Override
@@ -61,16 +67,27 @@ public class UpdateToDoFragment extends DialogFragment {
         toDo = (EditText) view.findViewById(R.id.toDo);
         dp = (DatePicker) view.findViewById(R.id.datePicker);
         add = (Button) view.findViewById(R.id.add);
+        spinner = (Spinner) view.findViewById(R.id.spinner_category);
 
-        int year = getArguments().getInt("year");
-        int month = getArguments().getInt("month");
-        int day = getArguments().getInt("day");
+        final int year = getArguments().getInt("year");
+        final int month = getArguments().getInt("month");
+        final int day = getArguments().getInt("day");
         id = getArguments().getLong("id");
-        String description = getArguments().getString("description");
+        final String description = getArguments().getString("description");
+        //get the category of the previous instance of the spinner
+        final String category = getArguments().getString("category");
         //An int to keep track of completion when updating
         int completed = getArguments().getInt("completed");
         dp.updateDate(year, month, day);
         completion = completed;
+        //Set the spinner to be on the previous category
+        //the value you want the position for
+        String myString = category;
+        //cast to an ArrayAdapter
+        ArrayAdapter myAdap = (ArrayAdapter) spinner.getAdapter();
+        int spinnerPosition = myAdap.getPosition(myString);
+        //set the default according to value
+        spinner.setSelection(spinnerPosition);
 
         toDo.setText(description);
 
@@ -92,8 +109,8 @@ public class UpdateToDoFragment extends DialogFragment {
                     UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                     Log.d(TAG, "MARKING AS DONE: " + id);
                     //We change the completion status since we clicked on mark as done
-                    //If we update the status, we pass the new completion status
-                    activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, 1);
+                    //If we update the status, we pass the new completion status but we do not care about other changes
+                    activity.closeUpdateDialog(year, month, day, description, id, 1, category);
                     UpdateToDoFragment.this.dismiss();
                 }
             });
@@ -109,8 +126,8 @@ public class UpdateToDoFragment extends DialogFragment {
                     UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                     Log.d(TAG, "MARKING AS NOT DONE: " + id);
                     //We change the completion status since we clicked on mark as not done
-                    //If we update the status, we pass the new completion status
-                    activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, 0);
+                    //If we update the status, we pass the new completion status but we do not care about other changes
+                    activity.closeUpdateDialog(year, month, day, description, id, 0, category);
                     UpdateToDoFragment.this.dismiss();
                 }
             });
@@ -124,7 +141,7 @@ public class UpdateToDoFragment extends DialogFragment {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 Log.d(TAG, "UPDATING DATE: " + id);
                 //If we update the date, we pass the previous completion value since we did not change anything
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, completion);
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id, completion, spinner.getSelectedItem().toString());
                 UpdateToDoFragment.this.dismiss();
             }
         });
